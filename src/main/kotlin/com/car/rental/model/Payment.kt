@@ -4,6 +4,7 @@ import jakarta.persistence.*
 import java.time.LocalDate
 
 @Entity
+
 data class Payment(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
