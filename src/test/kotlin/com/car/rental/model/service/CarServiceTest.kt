@@ -57,23 +57,29 @@ class CarServiceTest {
     }
 
     @Test
-    fun `should return byId`()
-    {
+    fun `should return byId`() {
         `when`(carRepository.findById(1L)).thenReturn(Optional.of(car))
-        var result=carService.getCarById(1L)
-        assertEquals(car,result)
+        var result = carService.getCarById(1L)
+        assertEquals(car, result)
         verify(carRepository, times(1)).findById(1L)
     }
 
     @Test
-    fun `should update the car`()
-    {
-        `when`(carRepository.findById(1L)).thenReturn(Optional.of(car))
-        `when`(carRepository.save(updatedCar)).thenReturn(updatedCar)
-        var updateCar=carService.updateCar(1L,updatedCar)
-        assertEquals(updatedCar.model,updatedCar.model)
+    fun `should delete car by id`() {
+        val carId = 1L
+        `when`(carRepository.existsById(carId)).thenReturn(true)
+        carService.deleteCar(carId)
+        verify(carRepository, times(1)).existsById(carId)
+        verify(carRepository, times(1)).deleteById(carId)
     }
 
+    @Test
+    fun `should update the car`() {
+        `when`(carRepository.findById(1L)).thenReturn(Optional.of(car))
+        `when`(carRepository.save(updatedCar)).thenReturn(updatedCar)
+        var updateCar = carService.updateCar(1L, updatedCar)
+        assertEquals(updatedCar.model, updatedCar.model)
+    }
 
 
 }
