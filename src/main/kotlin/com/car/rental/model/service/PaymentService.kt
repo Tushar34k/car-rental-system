@@ -16,4 +16,9 @@ class PaymentService(
     {
         return paymentRepository.findAll();
     }
+
+    fun getPaymentById(id:Long): Payment
+    {
+        return paymentRepository.findById(id).orElse(null)
+    }
 }
