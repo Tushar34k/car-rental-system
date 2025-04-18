@@ -11,4 +11,9 @@ class PaymentService(
     fun addPayment(payment: Payment): Payment {
         return paymentRepository.save(payment)
     }
+
+    fun getAllPayments(): List<Payment>
+    {
+        return paymentRepository.findAll();
+    }
 }
