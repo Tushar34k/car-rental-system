@@ -12,7 +12,7 @@ data class Payment(
 //    @OneToOne
 //    private val booking: Booking? = null
     val amountPaid: Double? = null,
-    val paymentMode: String? = null, // Cash / Card / UPI
+    val paymentMode: String? = null,
     val paymentDate: LocalDate? = null
 ) {
 
